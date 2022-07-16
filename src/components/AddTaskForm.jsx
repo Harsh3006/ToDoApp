@@ -1,4 +1,4 @@
-const AddTaskForm = ( {newTask, setNewTask, addTaskHandler} ) => {
+const AddTaskForm = ({ todos, newTask, setNewTask, addTaskHandler, clearAll }) => {
   return (
     <>
       <div className="row">
@@ -14,6 +14,13 @@ const AddTaskForm = ( {newTask, setNewTask, addTaskHandler} ) => {
             Add Task
           </button>
         </div>
+        {todos && todos.length ? (
+          <div className="col-auto">
+            <button onClick={clearAll} className="success">
+              Clear All
+            </button>
+          </div>
+        ) : null}
       </div>
     </>
   );

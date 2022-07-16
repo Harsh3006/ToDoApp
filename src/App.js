@@ -9,7 +9,7 @@ function App() {
   const [newTask, setNewTask] = useState("");
   const [todos, setTodos] = useState(items.Items);
   const [updateTask, setUpdateTask] = useState("");
-  const [countComplete, setCountComplete] = useState(0);
+  const [countComplete, setCountComplete] = useState(11);
 
   // Add Task
   const addTaskHandler = () => {
@@ -76,21 +76,11 @@ function App() {
     setUpdateTask("");
   };
 
-  window.onload = () => {
-    countCompleteHandler();
-  };
 
-  const countCompleteHandler = () => {
-    let count = 0;
-    todos.map((item) => {
-      if (item.completed) {
-        count += 1;
-      }
-      return item;
-    });
-    setCountComplete(count);
-  };
-
+  const clearAll = () =>{
+    setTodos('');
+    setCountComplete(0);
+  }
   return (
     <>
       <div className="container">
@@ -110,9 +100,11 @@ function App() {
           />
         ) : (
           <AddTaskForm
+            todos={todos}
             newTask={newTask}
             setNewTask={setNewTask}
             addTaskHandler={addTaskHandler}
+            clearAll={clearAll}
           />
         )}
 
