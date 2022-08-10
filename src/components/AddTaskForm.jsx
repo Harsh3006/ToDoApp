@@ -7,6 +7,7 @@ const AddTaskForm = ({ todos, newTask, setNewTask, addTaskHandler, clearAll }) =
             type="text"
             value={newTask}
             onChange={(event) => setNewTask(event.target.value)}
+            required
           />
         </div>
         <div className="col-auto">
